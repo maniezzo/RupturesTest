@@ -1,13 +1,19 @@
+import numpy as np
 import ruptures as rp
 import matplotlib.pyplot as plt
 import pandas as pd
 
 ds = pd.read_csv('resources/BTC_EURKrakenDatiStorici.csv', header=0)
-data_str = ds.Ultimo.values
+ds_values = ds.Ultimo.values
+
+# Inverti l'ordine dell'array
+data_inverted = ds_values[::-1]
+
+# Rimuovi il punto come separatore delle migliaia e sostituisci la virgola con il punto
+data = np.array([float(x.replace(".", "").replace(",", ".")) for x in data_inverted])
 
 # Converti le stringhe in numeri interi
-data = data_str.astype()
-print(data)
+#print(data)
 
 # Algoritmo Pelt
 pelt = rp.Pelt(model="l1", jump=20)
