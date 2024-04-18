@@ -16,16 +16,16 @@ data = np.array([float(x.replace(".", "").replace(",", ".")) for x in data_inver
 #print(data)
 
 # Algoritmo Pelt
-pelt = rp.Pelt(model="l1", jump=20)
+pelt = rp.Pelt(model="l2", jump=1000)
 bkps_pelt = pelt.fit_predict(data, 30)
 
 # Algoritmo BinarySeg
-algo = rp.Binseg(model="l2").fit(data)
-bkps_binSeg = algo.predict(n_bkps=3)
+algo = rp.Binseg(model="l2", jump=1000).fit(data)
+bkps_binSeg = algo.predict(pen=30)
 
 # Algoritmo Dynp
-algo = rp.Dynp(model="l1", min_size=3, jump=5).fit(data)
-bkps_dynp = algo.predict(n_bkps=3)
+algo = rp.Dynp(model="l2", min_size=3, jump=150).fit(data)
+bkps_dynp = algo.predict(n_bkps=5)
 
 # Visualizzazione dei risultati per Pelt
 rp.display(data, bkps_pelt)
