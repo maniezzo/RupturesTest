@@ -29,15 +29,15 @@ bkps_dynp = algo.predict(n_bkps=5)
 
 # Visualizzazione dei risultati per Pelt
 rp.display(data, bkps_pelt)
-plt.title("Pelt")
+plt.title("ETH Pelt")
 plt.show()
 
 # Visualizzazione dei risultati per BinarySeg
 rp.display(data, bkps_binSeg)
-plt.title("BinarySeg")
+plt.title("ETH BinarySeg")
 plt.show()
 
 # Visualizzazione dei risultati per Dynp
 rp.display(data, bkps_dynp)
-plt.title("Dynp")
+plt.title("ETH Dynp")
 plt.show()
