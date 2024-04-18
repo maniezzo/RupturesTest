@@ -3,7 +3,7 @@ import ruptures as rp
 import matplotlib.pyplot as plt
 import pandas as pd
 
-ds = pd.read_csv('resources/GBP_USD Dati Storici (1).csv', header=0)
+ds = pd.read_csv('resources/GBP_USDDatiStorici.csv', header=0)
 ds_values = ds.Ultimo.values
 
 # Inverti l'ordine dell'array
