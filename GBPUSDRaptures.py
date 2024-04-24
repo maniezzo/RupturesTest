@@ -14,18 +14,17 @@ data = np.array([float(x.replace(".", "").replace(",", ".")) for x in data_inver
 
 # Converti le stringhe in numeri interi
 #print(data)
-
 # Algoritmo Pelt
-pelt = rp.Pelt(model="l2", jump=2)
-bkps_pelt = pelt.fit_predict(data, 5)
+pelt = rp.Pelt(model="l2").fit(data)
+bkps_pelt = pelt.predict(pen=0.02)
 
 # Algoritmo BinarySeg
-algo = rp.Binseg(model="l2", jump=2).fit(data)
-bkps_binSeg = algo.predict(pen=5)
+algo = rp.Binseg(model="l2").fit(data)
+bkps_binSeg = algo.predict(pen=0.02)
 
 # Algoritmo Dynp
-algo = rp.Dynp(model="l2", min_size=4, jump=2).fit(data)
-bkps_dynp = algo.predict(n_bkps=5)
+algo = rp.Dynp(model="l2").fit(data)
+bkps_dynp = algo.predict(n_bkps=18)
 
 # Visualizzazione dei risultati per Pelt
 rp.display(data, bkps_pelt)

@@ -45,3 +45,7 @@ bkps_binSeg = algo.predict(pen=30)
 
 Il parametro ***n_bkps*** indica il numero desiderato di punti di rottura da predire, che in questo caso è 3. La funzione restituirà quindi un array contenente le posizioni dei punti di rottura predetti nella serie temporale data
 
+## TODO
+- aggiungere un esempio con metodo custom
+- usare altri dataset che ci passa il prof
+- capire iperparametri e vedere se ce ne sono altri utilizzabili
