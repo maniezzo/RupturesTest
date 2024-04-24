@@ -36,6 +36,10 @@ Parametri:
 
 ![img_1.png](img_1.png)
 
+Predict parametri:
+
+![img_4.png](img_4.png)
+
 ## BinarySeg
 
 Algoritmo di segmentazione binaria (Binseg) fornito dalla libreria ruptures in Python. Questa libreria è comunemente utilizzata per rilevare cambiamenti o discontinuità in serie temporali o sequenze di dati.
@@ -59,6 +63,9 @@ Parametri:
 
 ![img_2.png](img_2.png)
 
+Predict parametri:
+
+![img_5.png](img_5.png)
 
 ## Dynp
 Trova punti di cambiamento ottimali utilizzando la programmazione dinamica.
@@ -69,6 +76,10 @@ Parametri:
 
 
 ![img.png](img.png)
+
+Predict parametri:
+
+![img_3.png](img_3.png)
 
 ## TODO
 - aggiungere un esempio con metodo custom
