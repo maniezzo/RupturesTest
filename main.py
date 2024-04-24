@@ -2,15 +2,18 @@ import ruptures as rp
 import matplotlib.pyplot as plt
 import pandas as pd
 
-# Carica i dati
-ds = pd.read_csv('./resources/BoxJenkins.csv', header=0)
-data = ds.Passengers.values
+n_samples, n_dims, sigma = 1000, 3, 2
+n_bkps = 4  # number of breakpoints
+signal, bkps = rp.pw_constant(n_samples, n_dims, n_bkps, noise_std=sigma)
 
-# change point detection
-model = "l2"  # "l1", "rbf", "linear", "normal", "ar",...
-algo = rp.Binseg(model=model).fit(data)
-my_bkps = algo.predict(n_bkps=3)
+print(bkps)
 
-# show results
-rp.show.display(data, my_bkps, figsize=(10, 6))
+# detection
+algo = rp.Dynp(model="l2").fit(signal)
+result = algo.predict(n_bkps=4)
+
+print(result)
+
+# display
+rp.display(signal, bkps, result)
 plt.show()

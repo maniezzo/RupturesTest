@@ -1,6 +1,10 @@
 # Raptures
 
 ## Pelt
+Rilevamento del punto di cambio penalizzato.
+
+Per un dato modello e livello di penalità, calcola la segmentazione che riduce al minimo la somma vincolata degli errori di approssimazione.
+
 
 ***Model*** specifica il modello di rilevamento dei cambiamenti utilizzato.
 
@@ -27,6 +31,11 @@ bkps_pelt = pelt.fit_predict(data, 30)
 ***Pelt.fit_predict***: si utilizza per predirre i punti di cambiamento.
 In questo caso 30 specifica il numero massimo di cambiamenti che ci si aspetta di trovare nei dati.
 
+Parametri:
+
+
+![img_1.png](img_1.png)
+
 ## BinarySeg
 
 Algoritmo di segmentazione binaria (Binseg) fornito dalla libreria ruptures in Python. Questa libreria è comunemente utilizzata per rilevare cambiamenti o discontinuità in serie temporali o sequenze di dati.
@@ -44,6 +53,22 @@ bkps_binSeg = algo.predict(pen=30)
 ***Algo*** rappresenta l'algoritmo di segmentazione binaria.
 
 Il parametro ***n_bkps*** indica il numero desiderato di punti di rottura da predire, che in questo caso è 3. La funzione restituirà quindi un array contenente le posizioni dei punti di rottura predetti nella serie temporale data
+
+Parametri:
+
+
+![img_2.png](img_2.png)
+
+
+## Dynp
+Trova punti di cambiamento ottimali utilizzando la programmazione dinamica.
+
+Dato un modello di segmento, calcola la partizione migliore per la quale la somma degli errori è minima.
+
+Parametri:
+
+
+![img.png](img.png)
 
 ## TODO
 - aggiungere un esempio con metodo custom
