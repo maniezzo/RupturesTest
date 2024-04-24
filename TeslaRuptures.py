@@ -12,9 +12,6 @@ data_inverted = ds_values[::-1]
 # Rimuovi il punto come separatore delle migliaia e sostituisci la virgola con il punto
 data = np.array([float(x.replace(".", "").replace(",", ".")) for x in data_inverted])
 
-# Converti le stringhe in numeri interi
-#print(data)
-
 # Algoritmo Pelt
 pelt = rp.Pelt(model="l2").fit(data)
 bkps_pelt = pelt.predict(pen=30000)

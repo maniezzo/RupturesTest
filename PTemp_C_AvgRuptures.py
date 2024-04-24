@@ -3,14 +3,8 @@ import ruptures as rp
 import matplotlib.pyplot as plt
 import pandas as pd
 
-ds = pd.read_csv('resources/EthereumDatiStorici.csv', header=0)
-ds_values = ds.Ultimo.values
-
-# Inverti l'ordine dell'array
-data_inverted = ds_values[::-1]
-
-# Rimuovi il punto come separatore delle migliaia e sostituisci la virgola con il punto
-data = np.array([float(x.replace(".", "").replace(",", ".")) for x in data_inverted])
+ds = pd.read_csv('resources/PTemp_C_Avg.csv', header=0)
+data = ds.PTemp_C_Avg.values
 
 # Algoritmo Pelt
 pelt = rp.Pelt(model="l2").fit(data)
@@ -22,18 +16,18 @@ bkps_binSeg = algo.predict(pen=10)
 
 # Algoritmo Dynp
 algo = rp.Dynp(model="l2").fit(data)
-bkps_dynp = algo.predict(n_bkps=5)
+bkps_dynp = algo.predict(n_bkps=8)
 # Visualizzazione dei risultati per Pelt
 rp.display(data, bkps_pelt)
-plt.title("ETH Pelt")
+plt.title("PTemp Pelt")
 plt.show()
 
 # Visualizzazione dei risultati per BinarySeg
 rp.display(data, bkps_binSeg)
-plt.title("ETH BinarySeg")
+plt.title("PTemp BinarySeg")
 plt.show()
 
 # Visualizzazione dei risultati per Dynp
 rp.display(data, bkps_dynp)
-plt.title("ETH Dynp")
+plt.title("PTemp Dynp")
 plt.show()

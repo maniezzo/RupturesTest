@@ -34,11 +34,11 @@ In questo caso 30 specifica il numero massimo di cambiamenti che ci si aspetta d
 Parametri:
 
 
-![img_1.png](img_1.png)
+![img_1.png](img/img_1.png)
 
 Predict parametri:
 
-![img_4.png](img_4.png)
+![img_4.png](img/img_4.png)
 
 ## BinarySeg
 
@@ -61,11 +61,11 @@ Il parametro ***n_bkps*** indica il numero desiderato di punti di rottura da pre
 Parametri:
 
 
-![img_2.png](img_2.png)
+![img_2.png](img/img_2.png)
 
 Predict parametri:
 
-![img_5.png](img_5.png)
+![img_5.png](img/img_5.png)
 
 ## Dynp
 Trova punti di cambiamento ottimali utilizzando la programmazione dinamica.
@@ -75,11 +75,11 @@ Dato un modello di segmento, calcola la partizione migliore per la quale la somm
 Parametri:
 
 
-![img.png](img.png)
+![img.png](img/img.png)
 
 Predict parametri:
 
-![img_3.png](img_3.png)
+![img_3.png](img/img_3.png)
 
 ## TODO
 - aggiungere un esempio con metodo custom

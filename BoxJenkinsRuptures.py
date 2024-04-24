@@ -4,7 +4,7 @@ import pandas as pd
 
 ds = pd.read_csv('./resources/BoxJenkins.csv', header=0)
 data = ds.Passengers.values
-print(data)
+
 # Algoritmo Pelt
 pelt = rp.Pelt(model="l2").fit(data)
 bkps_pelt = pelt.predict(pen=1000)
