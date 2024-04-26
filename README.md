@@ -15,7 +15,17 @@ Predict parametri:
 
 ### BinarySeg
 
-Algoritmo di segmentazione binaria (Binseg) fornito dalla libreria ruptures in Python. Questa libreria è comunemente utilizzata per rilevare cambiamenti o discontinuità in serie temporali o sequenze di dati.
+La segmentazione binaria è piuttosto semplice: innanzitutto cerca un singolo punto di cambiamento nell'intero segnale.
+
+Una volta trovato quel punto, divide il segnale in due parti e ripete il processo per ciascuna di quelle parti.
+
+Ciò continua finché non vengono trovati più punti di modifica o non viene soddisfatto un criterio di arresto specificato.
+
+Ha una bassa complessità, il che significa che non richiede troppo tempo o potenza di calcolo per essere eseguito ed è una buona opzione per set di dati di grandi dimensioni.
+
+Uno svantaggio è che a volte può perdere punti di cambiamento o rilevarne di falsi, soprattutto quando i cambiamenti sono ravvicinati o il segnale è rumoroso.
+
+Inoltre prende decisioni basate sulla migliore scelta immediata senza considerare l'impatto complessivo sul risultato finale.
 
 
 Parametri:
@@ -27,9 +37,21 @@ Predict parametri:
 ![img_5.png](img/img_5.png)
 
 ### Dynp
-Trova punti di cambiamento ottimali utilizzando la programmazione dinamica.
+DynP sfrutta un approccio di programmazione dinamico per ordinare in modo efficiente la ricerca su tutte le possibili segmentazioni, il che aiuta a ottimizzare il processo e fornire risultati accurati.
 
-Dato un modello di segmento, calcola la partizione migliore per la quale la somma degli errori è minima.
+Funziona esaminando sistematicamente tutte le possibili segmentazioni di un dato segnale per trovare il minimo esatto della somma dei costi associati a ciascuna segmentazione.
+
+Tuttavia, un requisito importante per l'utilizzo di DynP è che l'utente debba specificare in anticipo il numero di punti di modifica.
+
+Anche se in alcuni casi questo potrebbe rappresentare un limite, la flessibilità e la precisione del metodo lo rendono uno strumento prezioso per il rilevamento dei punti di cambiamento quando il numero di punti di cambiamento è noto o può essere stimato.
+
+La complessità computazionale di DynP può essere un altro fattore limitante, soprattutto quando si ha a che fare con set di dati di grandi dimensioni o funzioni di costo più complesse.
+
+L'algoritmo potrebbe diventare lento o addirittura poco pratico per alcune applicazioni a causa del suo elevato costo computazionale.
+
+Se non conosci in anticipo il numero di punti di modifica, puoi considerarlo un altro iperparametro da ottimizzare.
+
+Ho deciso di eseguire un ciclo per provare valori diversi per il numero di punti di modifica e ispezionare visivamente i risultati per vedere quale aveva più senso.
 
 Parametri:
 
