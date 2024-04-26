@@ -1,9 +1,10 @@
 # Raptures
 ## Metodi di ricerca
 ### Pelt
-Rilevamento del punto di cambio penalizzato.
+Pelt è usato per stimare il numero e la posizione dei punti di cambiamento in una serie temporale. Questo algoritmo penalizza l'aggiunta di ogni punto di cambiamento con un valore di penalità, cercando la segmentazione con il costo più basso, considerando sia il costo della segmentazione che la penalità. 
 
-Per un dato modello e livello di penalità, calcola la segmentazione che riduce al minimo la somma vincolata degli errori di approssimazione.
+L'idea di base è che un punto di cambiamento deve ridurre il costo della segmentazione di più della penalità per essere considerato valido. 
+La scelta della penalità è critica: penalità basse possono causare il rilevamento di falsi punti di cambiamento, mentre penalità alte possono far perdere dei punti di cambiamento reali.
 
 Parametri:
 
