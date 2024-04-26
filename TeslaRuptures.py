@@ -36,11 +36,11 @@ for i, n_bkps in enumerate([8, 9, 10, 11, 12, 13]):
 
 
 # Visualizzazione dei risultati per Pelt
-rp.display(data, [], bkps_pelt)
+rp.display(data, bkps_pelt)
 plt.title("Tesla Pelt")
 plt.show()
 
 # Visualizzazione dei risultati per BinarySeg
-rp.display(data, [], bkps_binSeg)
+rp.display(data, bkps_binSeg)
 plt.title("Tesla BinarySeg")
 plt.show()

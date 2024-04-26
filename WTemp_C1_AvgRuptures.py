@@ -30,11 +30,11 @@ for i, n_bkps in enumerate([7, 8, 9, 10, 11, 12]):
 
 
 # Visualizzazione dei risultati per Pelt
-rp.display(data, [], bkps_pelt)
+rp.display(data, bkps_pelt)
 plt.title("WTemp Pelt")
 plt.show()
 
 # Visualizzazione dei risultati per BinarySeg
-rp.display(data, [], bkps_binSeg)
+rp.display(data, bkps_binSeg)
 plt.title("WTemp BinarySeg")
 plt.show()

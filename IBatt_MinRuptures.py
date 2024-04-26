@@ -32,12 +32,12 @@ for i, n_bkps in enumerate([8, 9, 10, 11, 12, 13]):
     ax[i].set_title(f"Dynp model with {n_bkps} breakpoints")
 
 # Visualizzazione dei risultati per Pelt
-rp.display(data, [], bkps_pelt)
+rp.display(data, bkps_pelt)
 plt.title("ETH Pelt")
 plt.show()
 
 # Visualizzazione dei risultati per BinarySeg
-rp.display(data, [], bkps_binSeg)
+rp.display(data, bkps_binSeg)
 plt.title("ETH BinarySeg")
 plt.show()
 

@@ -28,11 +28,11 @@ algo = rp.Binseg(model="l2").fit(data)
 bkps_binSeg = algo.predict(pen=1000)
 
 # Visualizzazione dei risultati per Pelt
-rp.display(data, [], bkps_pelt)
+rp.display(data, bkps_pelt)
 plt.title("BoxJenkins Pelt")
 plt.show()
 
 # Visualizzazione dei risultati per BinarySeg
-rp.display(data, [], bkps_binSeg)
+rp.display(data, bkps_binSeg)
 plt.title("BoxJenkins BinarySeg")
 plt.show()
