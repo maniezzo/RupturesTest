@@ -3,17 +3,18 @@ import ruptures as rp
 import matplotlib.pyplot as plt
 import pandas as pd
 
+from MyCost import MyCost
+
 ds = pd.read_csv('resources/ThermTemp1_Avg.csv', header=0)
 data = ds.ThermTemp1_Avg.values
 
-# Algoritmo Pelt
-pelt = rp.Pelt(model="l2").fit(data)
-bkps_pelt = pelt.predict(pen=3)
+# Algoritmo Pelt con custom cost
+algo = rp.Pelt(custom_cost=MyCost()).fit(data)
+bkps_pelt = algo.predict(pen=3)
 
 # Algoritmo BinarySeg
 algo = rp.Binseg(model="l2").fit(data)
 bkps_binSeg = algo.predict(pen=3)
-
 
 # Algoritmo Dynp
 fig, ax = plt.subplots(2,3, figsize=(1280/96, 720/96), dpi=96)
@@ -27,7 +28,6 @@ for i, n_bkps in enumerate([6, 7, 8, 9, 10, 11]):
     for bkp in result:
         ax[i].axvline(x=bkp, color='k', linestyle='--')
     ax[i].set_title(f"Dynp model with {n_bkps} breakpoints")
-
 
 # Visualizzazione dei risultati per Pelt
 rp.display(data, bkps_pelt)

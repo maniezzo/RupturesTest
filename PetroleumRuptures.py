@@ -3,6 +3,8 @@ import ruptures as rp
 import matplotlib.pyplot as plt
 import pandas as pd
 
+from MyCost import MyCost
+
 ds = pd.read_csv('resources/FuturePetrolioGreggioWTIDatiStorici.csv', header=0)
 ds_values = ds.Ultimo.values
 
@@ -12,9 +14,9 @@ data_inverted = ds_values[::-1]
 # Rimuovi il punto come separatore delle migliaia e sostituisci la virgola con il punto
 data = np.array([float(x.replace(",", ".")) for x in data_inverted])
 
-# Algoritmo Pelt
-pelt = rp.Pelt(model="l2").fit(data)
-bkps_pelt = pelt.predict(pen=8000)
+# Algoritmo Pelt con custom cost
+algo = rp.Pelt(custom_cost=MyCost()).fit(data)
+bkps_pelt = algo.predict(pen=1000)
 
 # Algoritmo BinarySeg
 algo = rp.Binseg(model="l2").fit(data)

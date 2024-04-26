@@ -3,20 +3,21 @@ import ruptures as rp
 import matplotlib.pyplot as plt
 import pandas as pd
 
+from MyCost import MyCost
+
 ds = pd.read_csv('resources/IBatt_Min.csv', header=0)
 data = ds.IBatt_Min.values
 
 # Converti le stringhe in numeri interi
 #print(data)
 
-# Algoritmo Pelt
-pelt = rp.Pelt(model="l2").fit(data)
-bkps_pelt = pelt.predict(pen=0.00005)
+# Algoritmo Pelt con custom cost
+algo = rp.Pelt(custom_cost=MyCost()).fit(data)
+bkps_pelt = algo.predict(pen=0.0005)
 
 # Algoritmo BinarySeg
 algo = rp.Binseg(model="l2").fit(data)
 bkps_binSeg = algo.predict(pen=0.00005)
-
 
 # Algoritmo Dynp
 fig, ax = plt.subplots(2,3, figsize=(1280/96, 720/96), dpi=96)
