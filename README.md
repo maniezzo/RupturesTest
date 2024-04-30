@@ -73,7 +73,7 @@ Esistono diversi tipi di modelli:
 + ***l2*** (Least Squared deviation): Questo metodo minimizza la somma degli scarti quadrati tra i punti dati e la linea di regressione. È sensibile agli outlier, ma può essere influenzato in modo significativo da essi.
 + ***rbf*** (Kernelized mean change): Questo metodo utilizza una funzione kernel per calcolare la similarità tra i segmenti di dati. È particolarmente utile quando i cambiamenti non sono necessariamente lineari e quando è importante catturare i cambiamenti non solo in valore ma anche in forma.
 + ***normal*** (Gaussian process change): Questo metodo utilizza un processo gaussiano per modellare i dati e individuare i cambiamenti. È utile quando si desidera modellare la correlazione tra i dati e avere una stima della distribuzione dei cambiamenti.
-+ ***CostCosine*** (CostCosine): Questo metodo calcola il costo del cambiamento utilizzando la similarità coseno tra i segmenti di dati. Può essere utile quando si desidera rilevare cambiamenti basati sulla direzione dei vettori dei dati.
++ ***cosine*** (CostCosine): Questo metodo calcola il costo del cambiamento utilizzando la similarità coseno tra i segmenti di dati. Può essere utile quando si desidera rilevare cambiamenti basati sulla direzione dei vettori dei dati.
 + ***linear*** (Linear model change): Questo metodo assume che i dati seguano un modello lineare e cerca i punti in cui il modello cambia. È utile quando si sospetta che i cambiamenti seguano un modello lineare.
 + ***clinear*** (Continuous linear change): Questo metodo assume che i cambiamenti seguano un modello lineare ma possono essere continui nel tempo. È utile quando si desidera rilevare cambiamenti graduati e non repentini.
 + ***rank*** (Rank-based change): Questo metodo si basa sulle classifiche dei dati anziché sui valori effettivi. È utile quando si desidera rilevare cambiamenti nella distribuzione dei dati piuttosto che nei valori stessi.
@@ -142,5 +142,4 @@ In sintesi, la funzione error() calcola il costo di un segmento di segnale speci
 
 
 ## TODO
-- aggiungere un esempio con metodo custom
 - capire iperparametri e vedere se ce ne sono altri utilizzabili
