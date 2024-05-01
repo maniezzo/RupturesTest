@@ -140,6 +140,17 @@ return cost
 
 In sintesi, la funzione error() calcola il costo di un segmento di segnale specifico, che è la somma delle differenze assolute tra ciascun punto del segmento e la media del segmento stesso. Questo costo personalizzato viene quindi utilizzato per guidare l'algoritmo di rilevamento dei punti di rottura nella ricerca dei punti di rottura ottimali nella serie temporale.
 
+## Annotazioni
+
+### BTCEuro
+
+In base al dataset utilizzato, secondo me è meglio utilizzare come modello sia per BinarySeng
+che per Dynp ***l1***. L'obbietto della nostra analisi è quello di monitorare
+l'anadmaento del Bitcoin rispetto all'euro. Il Bitcoin è noto per la sua volatilità, che può
+causare outlier (dati anomali che si discosatno totalmente rispetto al dataset, dovuti a fattori esterni).
+L1 è un modello noto per la sua robustezza agli outlier, infitta minimizza la somma degli scarti assoluti tra 
+i punti dati e linea di regresseione, consentendo di effettuare delle analisi più accurate riducendo l'influenza di fattori esterni.
+
 
 ## TODO
 - capire iperparametri e vedere se ce ne sono altri utilizzabili

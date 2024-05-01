@@ -17,16 +17,18 @@ data = np.array([float(x.replace(".", "").replace(",", ".")) for x in data_inver
 # Algoritmo Pelt con custom cost
 algo = rp.Pelt(custom_cost=MyCost()).fit(data)
 bkps_pelt = algo.predict(pen=100000)
+print(bkps_pelt.__len__())
 
 # Algoritmo BinarySeg
-algo = rp.Binseg(model="l2").fit(data)
-bkps_binSeg = algo.predict(pen=1000000000)
+algo = rp.Binseg(model="l1").fit(data)
+bkps_binSeg = algo.predict(pen=100000)
+print(bkps_binSeg.__len__())
 
 # Algoritmo Dynp
 fig, ax = plt.subplots(2,3, figsize=(1280/96, 720/96), dpi=96)
 ax = ax.ravel()
 
-algo = rp.Dynp(model="l2").fit(data)
+algo = rp.Dynp(model="l1").fit(data)
 
 for i, n_bkps in enumerate([5, 6, 7, 8, 9, 10]):
     result = algo.predict(n_bkps=n_bkps)

@@ -14,7 +14,8 @@ bkps_pelt = algo.predict(pen=10)
 
 # Algoritmo BinarySeg
 algo = rp.Binseg(model="l2").fit(data)
-bkps_binSeg = algo.predict(pen=10)
+bkps_binSeg = algo.predict(pen=4)
+print(bkps_binSeg)
 
 # Algoritmo Dynp
 fig, ax = plt.subplots(2,3, figsize=(1280/96, 720/96), dpi=96)
