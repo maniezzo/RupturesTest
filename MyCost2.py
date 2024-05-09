@@ -15,6 +15,6 @@ class MyCost(BaseCost):
       """Return the approximation cost on the segment [start:end]."""
       segment = self.signal[start:end]
       segment_mean = np.mean(segment)
-      absolute_diff = np.abs(segment - segment_mean)
-      cost = np.sum(absolute_diff)
+      absolute_diff = np.power((segment - segment_mean),2)
+      cost = np.sum(absolute_diff)/np.sqrt(len(segment))
       return cost
