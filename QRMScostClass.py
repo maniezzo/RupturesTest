@@ -3,8 +3,8 @@ import statsmodels.api as sm
 import matplotlib.pyplot as plt
 from ruptures.base import BaseCost
 
-class MyCost(BaseCost):
-   """Custom cost for percentage difference between segment medians."""
+class QRMScost(BaseCost):
+   """Custom cost for quasi RMSE"""
    model = ""
    min_size = 2
 

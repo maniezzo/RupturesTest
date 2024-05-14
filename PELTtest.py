@@ -2,30 +2,57 @@ import numpy as np
 import ruptures as rp
 import matplotlib.pyplot as plt
 import pandas as pd
+import time
 
-from MyCost2 import MyCost
+from QRMScostClass import QRMScost
 
-if __name__ == "__main__":
-   dsName = "test"
-   ds = pd.read_csv('resources/'+dsName+".csv", header=0)
+def test_pelt(filepath,minsize):
+   ds = pd.read_csv('e:/My Drive/Ongoing/segmentation/data/home/'+dsName+".csv", header=0)
    ds_values = ds.iloc[:,1].values
+   penval = np.median(ds_values)
 
    if(dsName[0]=='b'):
-      # Inverti l'ordine dell'array
+      # Inverti l'ordine dell'array, per dataset strani
       data_inverted = ds_values[::-1]
       # Rimuovi il punto come separatore delle migliaia e sostituisci la virgola con il punto
       data = np.array([float(x.replace(".", "").replace(",", ".")) for x in data_inverted])
    else:
       data = ds_values
 
-   # Algoritmo Pelt con custom cost
-   algo = rp.Pelt(custom_cost=MyCost()).fit(data)
-   bkps_pelt = algo.predict(pen=100000) # valore coerente con quelli del dataset
-   print(f"Num breakpoint {bkps_pelt.__len__()}") # i breakpoint trovati
+   tstart = time.process_time()
+   algo = rp.Pelt(custom_cost=QRMScost(),min_size=minsize).fit(data)
+   ttot = time.process_time() - tstart
+   print(f"CPU time: {ttot:.6f} seconds")
 
-   # Visualizzazione dei risultati per Pelt
-   rp.display(data, bkps_pelt)
-   plt.title("BTC Pelt")
+   result = algo.predict(pen=penval) # valore coerente con quelli del dataset
+   print(f"Num breakpoint {result.__len__()}") # i breakpoint trovati
+
+   return data, result, ttot
+
+if __name__ == "__main__":
+   dsName = "BTC-USD"
+   minsize = 10
+   data, result, ttot = test_pelt(dsName,minsize)
+   n_bkps = len(result)
+
+   q = QRMScost()
+   q.fit(data)
+   t0 = 0
+   ctot = 0
+   for bkp in result:
+      c = q.error(t0, bkp)
+      ctot += c
+      t0 = bkp
+
+   fig, ax = plt.subplots(1, 1, figsize=(1280 / 96, 720 / 96), dpi=96)
+   ax.plot(data.tolist())
+   for bkp in result:
+      ax.axvline(x=bkp, color='k', linestyle='--')
+   ax.set_title(f"PELT model with {n_bkps} breakpoints")
    plt.show()
 
-   print("fine")
+   rp.display(data, result)
+   plt.title(dsName + " PELT")
+   plt.show()
+
+   print(f"PELT, sataset {dsName} costo {ctot} n_brkpoints {n_bkps} t.cpu {ttot}")
